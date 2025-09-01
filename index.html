@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Obras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- Tela de Login -->
+        <div id="login-container" class="form-container">
+            <div class="form-header">
+                <h1>Bem-vindo</h1>
+                <p>Acesse sua conta para continuar</p>
+            </div>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="cta-button">Entrar</button>
+            </form>
+            <div id="message" class="message"></div>
+        </div>
+
+        <!-- Dashboard do Engenheiro -->
+        <div id="engineer-dashboard" class="dashboard hidden">
+            <header class="dashboard-header">
+                <h2>Dashboard do Engenheiro</h2>
+                <button id="logout-btn-engineer" class="logout-button">Sair</button>
+            </header>
+            
+            <section id="engineer-dashboard-list" class="dashboard-section">
+                <h3 class="section-title">Gerenciamento de Obras</h3>
+                <button id="add-project-btn" class="cta-button add-button">Cadastrar Nova Obra</button>
+                <div id="project-list" class="project-list">
+                    <!-- Cards de projetos serão injetados aqui -->
+                </div>
+            </section>
+
+            <!-- Seção de Gerenciamento de Projeto Específico -->
+            <section id="manage-project-section" class="dashboard-section hidden">
+                <h3 class="section-title" id="manage-project-title"></h3>
+                
+                <div class="manage-grid">
+                    <div class="manage-box">
+                        <h4>Registrar Nova Etapa</h4>
+                        <form id="add-stage-form" class="manage-form">
+                            <input type="text" id="stage-name" placeholder="Nome da etapa" required>
+                            <textarea id="stage-comment" placeholder="Comentário técnico" required></textarea>
+                            <label for="stage-photos" class="file-label">
+                                <span id="file-name">Selecionar Fotos</span>
+                            </label>
+                            <input type="file" id="stage-photos" accept="image/*" multiple required style="display: none;">
+                            <button type="submit" class="cta-button">Adicionar Etapa</button>
+                        </form>
+                    </div>
+
+                    <div class="manage-box">
+                        <h4>Enviar Aviso ao Cliente</h4>
+                        <form id="send-notice-form" class="manage-form">
+                            <textarea id="notice-message" placeholder="Mensagem do aviso" required></textarea>
+                            <button type="submit" class="cta-button">Enviar Aviso</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h4>Histórico da Obra</h4>
+                    <div id="project-history" class="history-list">
+                        <!-- Histórico será injetado aqui -->
+                    </div>
+                </div>
+                
+                <button id="back-to-list-btn" class="secondary-button">Voltar para a Lista de Obras</button>
+            </section>
+        </div>
+
+        <!-- Dashboard do Cliente -->
+        <div id="client-dashboard" class="dashboard hidden">
+            <header class="dashboard-header">
+                <h2>Acompanhamento da Obra</h2>
+                <button id="logout-btn-client" class="logout-button">Sair</button>
+            </header>
+            
+            <section class="dashboard-section">
+                <h3 class="section-title" id="obra-nome"></h3>
+                <p class="client-info">Cliente: <span id="cliente-nome"></span></p>
+                <span id="obra-status" class="status"></span>
+            </section>
+
+            <section class="dashboard-section timeline-section">
+                <h3 class="section-title">Linha do Tempo</h3>
+                <div class="timeline" id="timeline-list">
+                    <!-- Etapas da obra serão injetadas aqui -->
+                </div>
+            </section>
+            
+            <section class="dashboard-section">
+                <h3 class="section-title">Avisos e Comunicação</h3>
+                <ul id="avisos-list" class="avisos-list">
+                    <!-- Avisos serão injetados aqui -->
+                </ul>
+            </section>
+        </div>
+
+        <!-- Modal de Cadastro de Obra -->
+        <div id="add-project-modal" class="modal hidden">
+            <div class="modal-content">
+                <span id="close-modal-btn" class="close-button">&times;</span>
+                <h3>Cadastrar Nova Obra</h3>
+                <form id="new-project-form">
+                    <div class="input-group">
+                        <label for="new-project-name">Nome da Obra</label>
+                        <input type="text" id="new-project-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new-project-client-name">Nome do Cliente</label>
+                        <input type="text" id="new-project-client-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="new-project-client-email">E-mail do Cliente</label>
+                        <input type="email" id="new-project-client-email" required>
+                    </div>
+                    <button type="submit" class="cta-button">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
